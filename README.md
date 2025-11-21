@@ -20,20 +20,38 @@ Projet fullstack composé de deux applications :
 ##  Structure
 backend/
  ├── src/
+
+ 
  │    ├── modules/ (auth, users, articles, comments, notifications)
+
+ 
  │    ├── middlewares/
+
+ 
  │    ├── scripts/ (seed-admin.js)
+
+ 
  │    ├── app.js
+
+ 
  │    └── server.js
+
+ 
  └── tests/ (permissions)
 
 ##  Installation
 cd backend
+
+
 npm install
 
 ## Seeder (admin par défaut)
 npm run seed:admin
+
+
 email : admin@test.com
+
+
 mot de passe : Admin123
 
 ##  Tests
@@ -48,19 +66,35 @@ npm run dev
 
 ## Structure
 frontend/
+
+
  ├── src/app/
+
+ 
  │     ├── core/
+
+ 
  │     ├── features/ (auth, articles, admin, profile)
+
+ 
  │     └── shared/
+
+ 
  ├── angular.json
+
+ 
  └── package.json
 
 ##  Installation
 cd frontend
+
+
 npm install
 
 ### Vérifiez la configuration backend :
 Avant de lancer le frontend, vérifiez le fichier :
+
+
 `src/environments/environment.ts`
 
 Les URL doivent pointer vers votre backend (ex : http://localhost:4000).
