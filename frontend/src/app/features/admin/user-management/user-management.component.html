@@ -1,0 +1,38 @@
+<div class="max-w-3xl mx-auto bg-white rounded shadow p-6">
+  <h2 class="text-xl font-semibold mb-4">Gestion des utilisateurs</h2>
+
+  <div *ngIf="loading" class="text-sm text-gray-500 mb-2">
+    Chargement...
+  </div>
+
+  <div *ngIf="error" class="text-sm text-red-600 mb-2">
+    {{ error }}
+  </div>
+
+  <table class="w-full text-sm border-collapse">
+    <thead>
+      <tr class="border-b bg-gray-50">
+        <th class="text-left p-2">Nom</th>
+        <th class="text-left p-2">Email</th>
+        <th class="text-left p-2">Rôle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" class="border-b">
+        <td class="p-2">{{ user.name }}</td>
+        <td class="p-2">{{ user.email }}</td>
+        <td class="p-2">
+          <select
+            [(ngModel)]="user.role"
+            (ngModelChange)="onRoleChange(user, $event)"
+            class="border rounded px-2 py-1 text-xs"
+          >
+            <option *ngFor="let role of roles" [ngValue]="role">
+              {{ role }}
+            </option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

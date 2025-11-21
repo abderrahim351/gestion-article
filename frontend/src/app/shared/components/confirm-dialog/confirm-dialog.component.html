@@ -1,0 +1,32 @@
+<div
+  *ngIf="visible"
+  class="fixed inset-0 z-40 flex items-center justify-center bg-black/40"
+>
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-sm p-5">
+    <h3 class="text-lg font-semibold mb-3">
+      {{ options.title }}
+    </h3>
+
+    <p class="text-sm text-gray-700 mb-5">
+      {{ options.message }}
+    </p>
+
+    <div class="flex justify-end gap-2">
+      <button
+        type="button"
+        (click)="onCancel()"
+        class="px-3 py-1 text-xs rounded border border-gray-300 text-gray-700 hover:bg-gray-100"
+      >
+        {{ options.cancelText || 'Annuler' }}
+      </button>
+
+      <button
+        type="button"
+        (click)="onConfirm()"
+        class="px-3 py-1 text-xs rounded bg-red-600 text-white hover:bg-red-500"
+      >
+        {{ options.confirmText || 'Confirmer' }}
+      </button>
+    </div>
+  </div>
+</div>

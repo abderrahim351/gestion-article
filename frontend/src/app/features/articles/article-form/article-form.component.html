@@ -1,0 +1,68 @@
+<div class="max-w-xl mx-auto bg-white rounded shadow p-6">
+  <h2 class="text-xl font-semibold mb-4">
+    {{ isEdit ? 'Modifier un article' : 'Nouvel article' }}
+  </h2>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+    <div>
+      <label class="block text-sm mb-1">Titre</label>
+      <input
+        type="text"
+        formControlName="title"
+        class="w-full border rounded px-3 py-2 text-sm"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm mb-1">Contenu</label>
+      <textarea
+        rows="6"
+        formControlName="content"
+        class="w-full border rounded px-3 py-2 text-sm"
+      ></textarea>
+    </div>
+
+    <div>
+      <label class="block text-sm mb-1">Image</label>
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        class="w-full text-sm"
+      />
+
+      <div *ngIf="getDisplayImageUrl()" class="mt-2">
+        <p class="text-xs text-gray-500 mb-1">Image actuelle :</p>
+        <img
+          [src]="getDisplayImageUrl()"
+          alt="image actuelle"
+          class="h-24 w-24 object-cover rounded border"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label class="block text-sm mb-1">Tags (séparés par des virgules)</label>
+      <input
+        type="text"
+        formControlName="tags"
+        class="w-full border rounded px-3 py-2 text-sm"
+      />
+      <p class="text-xs text-gray-500 mt-1">
+        Exemple : <code>node, angular, backend</code>
+      </p>
+    </div>
+
+    <div *ngIf="error" class="text-sm text-red-600">
+      {{ error }}
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="loading || form.invalid"
+      class="px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-500"
+    >
+      {{ loading ? 'Enregistrement...' : (isEdit ? 'Mettre à jour' : 'Créer') }}
+    </button>
+  </form>
+</div>
